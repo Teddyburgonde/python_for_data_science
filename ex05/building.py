@@ -2,6 +2,27 @@ import sys
 import string
 
 def count_chars(text: str) ->int:
+	"""
+    Analyze a text and count different types of characters.
+
+    The function iterates through the given string and computes the number of:
+      - uppercase letters
+      - lowercase letters
+      - digits
+      - spaces
+      - punctuation marks
+
+    :param text:
+        The string to analyze.
+    :returns:
+        A dictionary containing the total number of characters and
+        the detailed breakdown (upper, lower, digits, spaces, punctuation).
+
+    :example:
+        >>> count_chars("Hello, World! 42")
+        {'total': 16, 'upper': 2, 'lower': 8,
+         'digits': 2, 'spaces': 2, 'punctuation': 2}
+	"""
 	upper = 0
 	lower = 0
 	digits = 0
@@ -29,6 +50,18 @@ def count_chars(text: str) ->int:
 	}
 
 def main():
+	"""
+    Main entry point of the program.
+
+    - Checks command-line arguments.
+    - If no argument is provided, asks the user to input a text.
+    - If more than one argument is provided, prints an error message.
+    - Otherwise, analyzes the given text with `count_chars`
+      and prints the statistics.
+
+    :raises AssertionError:
+        If more than one argument is provided.
+    """
 	if len(sys.argv) == 1:
 		text = input("What is the text to analyze?\n")
 	elif len(sys.argv) > 2:
