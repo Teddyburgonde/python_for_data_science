@@ -41,7 +41,7 @@ def count_chars(text: str) ->int:
 			punct += 1
 
 	return {
-		"total": len(text),
+		"total": len(text) + 1,
 		"upper": upper,
 		"lower": lower,
 		"digits": digits,
@@ -63,7 +63,7 @@ def main():
         If more than one argument is provided.
     """
 	if len(sys.argv) == 1:
-		text = input("What is the text to analyze?\n")
+		text = input("What is the text to count?\n")
 	elif len(sys.argv) > 2:
 		print("AssertionError: more than one argument is provided")
 		return
