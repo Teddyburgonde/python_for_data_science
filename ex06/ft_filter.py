@@ -1,5 +1,5 @@
 def ft_filter(function, iterable):
-	"""
+    """
     Custom implementation of Python's built-in filter function.
 
     This function applies `function` to each element of `iterable` and
@@ -17,4 +17,4 @@ def ft_filter(function, iterable):
         >>> ft_filter(lambda x: x > 2, [1, 2, 3, 4])
         [3, 4]
     """
-	return [item for item in iterable if function(item)]	
+    return [item for item in iterable if function(item)]
