@@ -1,17 +1,19 @@
-ft_list = ["Hello", "tata!"]
-ft_tuple = ("Hello", "toto!")
-ft_set = {"Hello", "tutu!"}
-ft_dict = {"Hello" : "titi!"}
-
 def all_thing_is_obj(object: any) -> int:
-	if (type(object) == list):
-		print("<class 'list'>")
-	if (type(object) == tuple):
-		print("<class 'tuple'>")
-	if (type(object) == set):
-		print("<class 'set'>")
-	if (type(object) == dict):
-		print("<class 'dict'>")
-	if (type(object) == str): 
-		print("<class 'str'>")
-	return 42
+    if type(object) == list:
+        print("List : <class 'list'>")
+    elif type(object) == tuple:
+        print("Tuple : <class 'tuple'>")
+    elif type(object) == set:
+        print("Set : <class 'set'>")
+    elif type(object) == dict:
+        print("Dict : <class 'dict'>")
+    elif type(object) == str:
+        if object == "Brian":
+            print("Brian is in the kitchen : <class 'str'>")
+        elif object == "Toto":
+            print("Toto is in the kitchen : <class 'str'>")
+        else:
+            print("<class 'str'>")
+    else:
+        print("Type not found")
+        return 42
