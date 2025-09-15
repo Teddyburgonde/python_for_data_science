@@ -16,4 +16,4 @@ def all_thing_is_obj(object: any) -> int:
             print("<class 'str'>")
     else:
         print("Type not found")
-        return 42
+    return 42

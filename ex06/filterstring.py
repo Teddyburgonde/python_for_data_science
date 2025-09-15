@@ -20,14 +20,12 @@ def main():
         - If the second argument is not an integer.
     """
     if len(sys.argv) != 3:
-        print("AssertionError: the arguments are bad")
-        return
+        raise AssertionError("the arguments are bad")
 
     try:
         number = int(sys.argv[2])
     except ValueError:
-        print("AssertionError: the arguments are bad")
-        return
+        raise AssertionError("the arguments are bad")
 
     words = sys.argv[1].split()
     filtered = ft_filter(lambda w: len(w) > number, words)
