@@ -67,8 +67,7 @@ def main():
     if len(sys.argv) == 1:
         text = input("What is the text to count?\n")
     elif len(sys.argv) > 2:
-        print("AssertionError: more than one argument is provided")
-        return
+        raise AssertionError("more than one argument is provided")
     else:
         text = sys.argv[1]
 

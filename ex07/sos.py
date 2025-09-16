@@ -37,7 +37,7 @@ def to_morse(text: str) -> str:
     result = []
     for c in text:
         if c.upper() not in MORSE_CODE:
-            raise ValueError("Invalid character")
+            raise AssertionError("the arguments are bad")
         result.append(MORSE_CODE[c.upper()])
     return " ".join(result)
 
@@ -57,14 +57,9 @@ def main():
         - If the provided string contains invalid characters.
     """
     if len(sys.argv) != 2:
-        print("AssertionError: the arguments are bad")
-        return
-    try:
-        result = to_morse(sys.argv[1])
-        print(result)
-    except ValueError:
-        print("AssertionError: the arguments are bad")
-        return
+        raise AssertionError("the arguments are bad")
+    result = to_morse(sys.argv[1])
+    print(result)
 
 
 if __name__ == "__main__":
