@@ -5,18 +5,6 @@ Charger l’image animal.jpeg, effectuer un zoom centré de 400×400 pixels,
 extraire un seul canal (par exemple le rouge),
 puis afficher le résultat avec les axes X et Y visibles.
 Étapes:
-1. Importer les modules nécessaires
-Importer :
-ta fonction ft_load depuis load_image.py,
-numpy pour manipuler les tableaux,
-matplotlib.pyplot pour afficher l’image,
-et PIL.Image pour les opérations d’image.
-2. Charger l’image
-Utiliser ft_load("animal.jpeg") pour récupérer le tableau de pixels.
-Vérifier que le chargement s’est bien passé.
-3. Vérifier le type
-S’assurer que l’image chargée est bien un objet valide (par exemple un tableau NumPy ou une image PIL).
-Lever une erreur claire si ce n’est pas le cas.
 4. Récupérer la taille de l’image
 Obtenir la largeur et la hauteur de l’image pour pouvoir calculer son centre.
 5. Calculer la zone du zoom
@@ -43,4 +31,13 @@ fichier manquant,
 problème de découpage,
 ou autre erreur imprévue.
 """
+
+from load_image import ft_load
+from PIL import Image
+import numpy as np
+import matplotlib.pyplot as plt
+
+img = ft_load("animal.jpeg")
+if not isinstance(img, np.ndarray):
+    raise TypeError("The loaded object is not a NumPy array.")
 

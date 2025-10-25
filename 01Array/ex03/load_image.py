@@ -1,19 +1,3 @@
-"""
-Objectif :
-Créer une fonction ft_load() qui ouvre une image, 
-affiche ses informations et retourne ses pixels sous forme de tableau.
-
-Étapes :
-1. Importer une bibliothèque pour ouvrir l’image (ex : PIL) et une pour la convertir en tableau (ex : NumPy).
-2. Ouvrir le fichier image à partir du chemin reçu en paramètre.
-3. Vérifier que le format de l’image est bien JPG ou JPEG.
-4. Convertir l’image en tableau (valeurs RGB).
-5. Afficher la forme du tableau (hauteur, largeur, canaux).
-6. Afficher le contenu des pixels (le tableau complet).
-7. Retourner ce tableau.
-8. Gérer les erreurs : fichier manquant, format invalide, problème de lecture.
-"""
-
 from PIL import Image
 import numpy as np
 
