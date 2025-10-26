@@ -1,6 +1,7 @@
 from PIL import Image
 import numpy as np
 
+
 def ft_load(path: str) -> np.ndarray:
     """
     Charge une image depuis un chemin de fichier, affiche ses informations,
@@ -12,7 +13,8 @@ def ft_load(path: str) -> np.ndarray:
         - convertit l’image en tableau NumPy ;
         - affiche la forme du tableau (hauteur, largeur, canaux) ;
         - affiche le contenu des pixels ;
-        - gère les erreurs courantes (fichier introuvable, format invalide, etc.).
+        - gère les erreurs courantes
+        (fichier introuvable, format invalide, etc.).
 
     Args:
         path (str): Le chemin vers le fichier image à charger.
@@ -30,7 +32,7 @@ def ft_load(path: str) -> np.ndarray:
         if img.format not in ["JPEG", "JPG"]:
             raise ValueError("Only JPEG and JPG formats are supported.")
         array = np.array(img)
-        print(array.shape)
+        print(f"The shape of image is: {array.shape}")
         print(array)
         return array
 
