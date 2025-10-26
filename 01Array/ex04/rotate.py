@@ -37,13 +37,11 @@ Raises:
     TypeError: Si l’image chargée n’est pas un tableau NumPy.
     Exception: Pour toute autre erreur imprévue
     (ex: problème de découpe ou de type).
-
-Returns:
-    None
 """
 
 
 def transpose_image(matrix: list[list[int]]) -> list[list[int]]:
+    """Transpose manuellement une matrice (échange lignes et colonnes)."""
     transposed = []
     for i in range(len(matrix[0])):
         new_row = []
@@ -53,39 +51,47 @@ def transpose_image(matrix: list[list[int]]) -> list[list[int]]:
     return transposed
 
 
-try:
-    img = ft_load("animal.jpeg")
-    if not isinstance(img, np.ndarray):
-        raise TypeError("The loaded object is not a NumPy array.")
-    hauteur, largeur,  _ = img.shape
-    center_x = largeur // 2
-    center_y = hauteur // 2
-    left = center_x - 200
-    upper = center_y - 200
-    right = center_x + 200
-    lower = center_y + 200
+def main():
+    try:
+        img = ft_load("animal.jpeg")
+        if not isinstance(img, np.ndarray):
+            raise TypeError("The loaded object is not a NumPy array.")
 
-    # Découpage de l'image
-    img_pil = Image.open("animal.jpeg")
-    cropped_img = img_pil.crop((left, upper, right, lower))
+        # Calcul du centre et découpe
+        hauteur, largeur, _ = img.shape
+        center_x = largeur // 2
+        center_y = hauteur // 2
+        left = center_x - 200
+        upper = center_y - 200
+        right = center_x + 200
+        lower = center_y + 200
 
-    # Conversion et extraction du canal rouge
-    array = np.array(cropped_img)
-    red_channel = array[:, :, 0]
+        # Découpage de l'image
+        img_pil = Image.open("animal.jpeg")
+        cropped_img = img_pil.crop((left, upper, right, lower))
 
-    transposed_arr = np.array(transpose_image(red_channel.tolist()))
+        # Conversion et extraction du canal rouge
+        array = np.array(cropped_img)
+        red_channel = array[:, :, 0]
 
-    # Affichage des infos
-    print(f"New shape after Transpose: {transposed_arr.shape}")
-    print(transposed_arr)
+        # Transposition manuelle
+        transposed_arr = np.array(transpose_image(red_channel.tolist()))
 
-    # Affichage de l'image transposée
-    plt.imshow(transposed_arr, cmap='gray')
-    plt.title("Transposed Image")
-    plt.xlabel("X axis")
-    plt.ylabel("Y axis")
-    plt.axis('on')
-    plt.show()
+        # Affichage des infos
+        print(f"New shape after Transpose: {transposed_arr.shape}")
+        print(transposed_arr)
 
-except Exception as e:
-    print(f"Error: {e}")
+        # Affichage de l'image transposée
+        plt.imshow(transposed_arr, cmap='gray')
+        plt.title("Transposed Image")
+        plt.xlabel("X axis")
+        plt.ylabel("Y axis")
+        plt.axis('on')
+        plt.show()
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+
+if __name__ == "__main__":
+    main()
