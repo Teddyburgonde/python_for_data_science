@@ -1,4 +1,4 @@
-from ex03.load_csv import load
+from load_csv import load
 import matplotlib.pyplot as plt
 
 
@@ -28,6 +28,9 @@ def main():
         (affiche la courbe d’évolution de l’espérance de vie en France)
     """
     df = load("life_expectancy_years.csv")
+    if df is None:
+        print("❌ Erreur : impossible de charger le fichier CSV.")
+        return
     france_data = df[df["country"] == "France"]
     print(france_data)
     years = france_data.columns[1:].tolist()

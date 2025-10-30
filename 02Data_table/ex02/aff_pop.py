@@ -17,9 +17,11 @@ def convert_population(pop):
     except ValueError:
         return 0.0  # valeur par défaut si la conversion échoue
 
+
 def main():
     """
-    Affiche la comparaison de population entre la France et le Belgium de 1800 à 2050.
+    Affiche la comparaison de population
+    entre la France et le Belgium de 1800 à 2050.
 
     Cette fonction :
       - charge le fichier CSV 'population_total.csv' via load()
@@ -29,24 +31,26 @@ def main():
     """
 
     df = load("population_total.csv")
+    if df is None:
+        print("❌ Erreur : impossible de charger le fichier")
+        return
     df_filtered = df[df["country"].isin(["France", "Belgium"])]
     df_years = df_filtered.loc[:, "1800":"2050"]
 
-    # Années
     years = df_years.columns.astype(int).tolist()
 
-    # Extraction des valeurs pour chaque pays
-    france_values = df_filtered[df_filtered["country"] == "France"].loc[:, "1800":"2050"].values[0]
-    belgium_values = df_filtered[df_filtered["country"] == "Belgium"].loc[:, "1800":"2050"].values[0]
+    france_values = df_filtered[df_filtered["country"]
+                                == "France"].loc[:, "1800":"2050"].values[0]
+    belgium_values = df_filtered[df_filtered["country"]
+                                 == "Belgium"].loc[:, "1800":"2050"].values[0]
 
-    # Conversion des unités
     france_values = [convert_population(v) for v in france_values]
     belgium_values = [convert_population(v) for v in belgium_values]
 
-    # --- Graphique ---
     plt.figure(figsize=(10, 6))
     plt.plot(years, france_values, label="France", color="green", linewidth=2)
-    plt.plot(years, belgium_values, label="Belgium", color="blue", linestyle="--", linewidth=2)
+    plt.plot(years, belgium_values,
+             label="Belgium", color="blue", linestyle="--", linewidth=2)
 
     plt.title("Comparaison de la population entre la France et le Belgium")
     plt.xlabel("Année")
