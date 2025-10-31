@@ -42,6 +42,7 @@ def main():
     df_merged["life_expectancy"] = df_merged["life_expectancy"].astype(float)
 
     plt.figure(figsize=(10, 6))
+    # trace un nuage de points
     plt.scatter(df_merged["gdp"], df_merged["life_expectancy"],
                 color="blue", alpha=0.7)
 
