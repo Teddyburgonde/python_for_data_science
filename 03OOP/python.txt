@@ -1,0 +1,60 @@
+from S1E9 import Character
+
+class Baratheon(Character):
+    # ton code ici
+
+class Lannister(Character):
+    # ton code ici
+
+
+Étape 2 : Créer la classe Baratheon
+
+* Faire hériter la classe Baratheon de Character.
+* Ajouter une docstring décrivant la famille Baratheon.
+* Créer le constructeur (**init**) :
+
+  * Appeler le constructeur parent avec super().**init**(first_name, is_alive).
+  * Ajouter les attributs spécifiques :
+
+    * family_name = 'Baratheon'
+    * eyes = 'brown'
+    * hairs = 'dark'
+* Définir les méthodes **str** et **repr** pour retourner une chaîne de texte (et non un objet).
+
+Étape 3 : Créer la classe Lannister
+
+* Faire hériter la classe Lannister de Character.
+* Ajouter une docstring décrivant la famille Lannister.
+* Créer le constructeur (**init**) :
+
+  * Appeler le constructeur parent avec super().**init**(first_name, is_alive).
+  * Ajouter les attributs spécifiques :
+
+    * family_name = 'Lannister'
+    * eyes = 'blue'
+    * hairs = 'light'
+* Définir les méthodes **str** et **repr** qui retournent une chaîne de caractères.
+
+Étape 4 : Créer la méthode de classe create_lannister
+
+* Ajouter une méthode de classe dans Lannister.
+* Utiliser le décorateur @classmethod.
+* Elle doit permettre de créer un objet Lannister directement en appelant :
+  Lannister.create_lannister("Jaine", True)
+* À l’intérieur, retourner une nouvelle instance de la classe avec cls(first_name, is_alive).
+
+Étape 5 : Créer et tester les objets
+
+* Créer un fichier tester.py.
+* Tester la création de Robert (Baratheon) et Cersei (Lannister).
+* Vérifier leurs attributs via print(obj.**dict**).
+* Appeler la méthode die() pour vérifier que is_alive devient False.
+* Tester les méthodes **str** et **repr**.
+* Tester la création d’un Lannister via create_lannister.
+
+Étape 6 : Vérification finale
+
+* Toutes les classes et méthodes doivent avoir une docstring.
+* Le code doit suivre la norme flake8.
+* Aucun code ne doit être exécuté dans la zone globale (utiliser main si nécessaire).
+* Vérifier que l’affichage correspond à la sortie attendue du sujet.
