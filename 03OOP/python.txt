@@ -1,47 +1,31 @@
 from S1E9 import Character
 
 class Baratheon(Character):
-    # ton code ici
-
+  """Classe représentant la famille Baratheon, connue pour ses cheveux foncés et ses yeux marron."""
+  def __init__(self, first_name, is_alive=True):
+    super().__init__(first_name, is_alive)
+    self.family_name = 'Baratheon'
+    self.eyes = 'brown'
+    self.hairs = 'dark'
+  def __str__(self):
+    return f"Vector: ({self.family_name}, {self.eyes}, {self.hairs})"
+  def __repr__(self):
+    return f"Vector: ({self.family_name}, {self.eyes}, {self.hairs})"
 class Lannister(Character):
-    # ton code ici
+  """Classe représentant la famille Lannister, connue pour sa richesse, son influence et ses cheveux clairs aux reflets dorés."""
+  def __init__(self, first_name, is_alive=True):
+    super().__init__(first_name, is_alive)
+    self.family_name = 'Lannister'
+    self.eyes = 'blue'
+    self.hairs = 'light'
+  def __str__(self):
+    return f"Vector: ({self.family_name}, {self.eyes}, {self.hairs})"
+  def __repr__(self):
+    return f"Vector: ({self.family_name}, {self.eyes}, {self.hairs})"
+  @classmethod
+  def create_lannister(cls, first_name, is_alive=True):
+    return cls(first_name, is_alive)
 
-
-Étape 2 : Créer la classe Baratheon
-
-* Faire hériter la classe Baratheon de Character.
-* Ajouter une docstring décrivant la famille Baratheon.
-* Créer le constructeur (**init**) :
-
-  * Appeler le constructeur parent avec super().**init**(first_name, is_alive).
-  * Ajouter les attributs spécifiques :
-
-    * family_name = 'Baratheon'
-    * eyes = 'brown'
-    * hairs = 'dark'
-* Définir les méthodes **str** et **repr** pour retourner une chaîne de texte (et non un objet).
-
-Étape 3 : Créer la classe Lannister
-
-* Faire hériter la classe Lannister de Character.
-* Ajouter une docstring décrivant la famille Lannister.
-* Créer le constructeur (**init**) :
-
-  * Appeler le constructeur parent avec super().**init**(first_name, is_alive).
-  * Ajouter les attributs spécifiques :
-
-    * family_name = 'Lannister'
-    * eyes = 'blue'
-    * hairs = 'light'
-* Définir les méthodes **str** et **repr** qui retournent une chaîne de caractères.
-
-Étape 4 : Créer la méthode de classe create_lannister
-
-* Ajouter une méthode de classe dans Lannister.
-* Utiliser le décorateur @classmethod.
-* Elle doit permettre de créer un objet Lannister directement en appelant :
-  Lannister.create_lannister("Jaine", True)
-* À l’intérieur, retourner une nouvelle instance de la classe avec cls(first_name, is_alive).
 
 Étape 5 : Créer et tester les objets
 
