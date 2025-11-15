@@ -1,53 +1,58 @@
-# * *args contient une liste de nombres (ex: 1, 42, 360...). 
-# * **kwargs contient les mots-clés qui indiquent les calculs à faire (ex: mean, median, var...). 
-
 def ft_statistics(*args: Any, **kwargs: Any) -> None:
-	"""Calcule et affiche différentes statistiques (moyenne, médiane, quartiles, écart-type, variance)
+    """Calcule et affiche différentes statistiques (moyenne, médiane, quartiles, écart-type, variance)
     selon les options demandées dans les paramètres nommés (**kwargs).
-    
+
     - *args : contient les nombres sur lesquels faire les calculs.
     - **kwargs : indique quelles statistiques afficher (ex: mean, median, var...).
     - Si aucun nombre n’est fourni ou qu’une option est inconnue, affiche 'ERROR'.
     """
-	if (len(args) == 0) or not kwargs:
+    if (len(args) == 0) or not kwargs:
 		print("ERROR")
 		return
+
 	valid_options = ["mean", "median", "quartile", "std", "var"]
+
 	for k, value in kwargs.items():
-		if value not in valid_options:
+        if value not in valid_options:
 			print("ERROR")
 			return
 
-# Étape 4 : Calculer les statistiques ❌
+        if value == "mean":
+            """Calcule et affiche la moyenne des valeurs."""
+            mean = sum(args) / len(args)
+            print("mean :", mean)
 
-# * mean : moyenne → somme(args) / len(args). ❌
-# * median : valeur du milieu après tri. ❌
+		if value == "median":
+		    """Calcule et affiche la médiane des valeurs."""
+            sorted_args = sorted(args)
+            if (len(sorted_args) % 2 == 0):
+                mid = len(sorted_args)//2
+                median = (sorted_args[mid - 1] + sorted_args[mid]) / 2
+            else:
+                median = sorted_args[len(sorted_args)//2]
+            print("median :", median)
 
-#   * Si la longueur est impaire → valeur centrale. ❌
-#   * Si elle est paire → moyenne des deux valeurs centrales. ❌
-# * quartile : valeurs aux positions 25% et 75%. ❌
+        if value == "quartile":
+            """Calcule et affiche les quartiles (25% et 75%) des valeurs."""
+            sorted_args = sorted(args)
+            n = len(sorted_args)
+            q1_index = int(0.25 * (n - 1))
+            q3_index = int(0.75 * (n - 1))
+            q1 = float(sorted_args[q1_index])
+            q3 = float(sorted_args[q3_index])
+            print("quartile :", [q1, q3])
 
-#   * Exemple : pour [11, 42, 64, 360], quartiles = [11.0, 64.0]. ❌
-# * std : écart-type → racine carrée de la variance. ❌
-# * var : variance → moyenne des carrés des écarts à la moyenne. ❌
+        if value == "std":
+            """Calcule et affiche l'écart-type des valeurs."""
+            mean = sum(args) / len(args)
+            squared_diffs = [(x - mean) ** 2 for x in args]  # différences au carré
+            variance = sum(squared_diffs) / len(args) # moyenne des carrés
+            std = variance ** 0.5 # racine carrée de la variance
+            print("std :", std)
 
-# Étape 5 : Lire les options demandées ❌
-
-# * Parcourir chaque élément de **kwargs. ❌
-# * Pour chaque valeur (ex: "mean"), faire le calcul correspondant. ❌
-# * Si la clé ne correspond à aucun calcul connu → afficher "ERROR". ❌
-
-# Étape 6 : Afficher les résultats ❌
-
-# * Pour chaque calcul réussi, afficher : nom du calcul + ":" + résultat. ❌
-# * Exemple :
-
-#   * mean : 95.6 ❌
-#   * median : 42 ❌
-#   * quartile : [11.0, 64.0] ❌
-
-# Étape 7 : Vérification finale ❌
-
-# * Tous les calculs affichent le bon résultat. ❌
-# * Les erreurs sont bien gérées (3 erreurs affichées dans le dernier test). ❌
-# * Le code respecte la norme flake8 et ne contient pas d’import interdit. ❌
+        if value == "var":
+            """Calcule et affiche la variance des valeurs."""
+            mean = sum(args) / len(args)
+            squared_diffs = [(x - mean) ** 2 for x in args]  # différences au carré
+            variance = sum(squared_diffs) / len(args) # moyenne des carrés   
+            print("variance :", variance)
